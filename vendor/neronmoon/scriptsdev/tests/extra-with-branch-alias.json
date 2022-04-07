@@ -1,0 +1,38 @@
+{
+  "name": "neronmoon/scriptsdev-test",
+  "description": "Scripts-dev behaviour for Composer",
+  "keywords": [
+    "dev",
+    "scripts",
+    "composer",
+    "commands",
+    "commands execution"
+  ],
+  "homepage": "https://github.com/neronmoon/scriptsdev",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vitaliy Krasnoperov",
+      "email": "alistar.neron@gmail.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "path",
+      "url": "<PLUGIN_PATH>"
+    }
+  ],
+  "require": {
+    "neronmoon/scriptsdev": "*@dev"
+  },
+  "version": "dev-master",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "99.0.0-dev"
+    },
+    "scripts-dev": {
+      "post-update-cmd": "echo SCRIPTSDEV RULEZ"
+    }
+  }
+}

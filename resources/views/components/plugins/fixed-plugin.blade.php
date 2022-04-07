@@ -1,7 +1,5 @@
 <div class="fixed-plugin">
-    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-        <i class="fa fa-cog py-2"> </i>
-    </a>
+
     <div class="card shadow-lg ">
         <div class="card-header pb-0 pt-3 ">
             <div class="float-start">
@@ -58,8 +56,8 @@
             <hr class="horizontal dark my-sm-4">
             <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/soft-ui-dashboard-laravel"
                 target="_blank">Free download</a>
-            <a class="btn btn-outline-dark w-100"
-                href="/documentation/bootstrap/overview/soft-ui-dashboard/index.html" target="blank">View
+            <a class="btn btn-outline-dark w-100" href="/documentation/bootstrap/overview/soft-ui-dashboard/index.html"
+                target="blank">View
                 documentation</a>
             <div class="w-100 text-center">
                 <a class="github-button" href=" https://github.com/creativetimofficial/soft-ui-dashboard-laravel"

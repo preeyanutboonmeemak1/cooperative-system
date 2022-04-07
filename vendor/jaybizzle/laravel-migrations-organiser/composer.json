@@ -1,0 +1,39 @@
+{
+    "name": "jaybizzle/laravel-migrations-organiser",
+    "description": "A Laravel package to help organise migration files.",
+    "keywords": ["laravel", "migrations", "migrate", "organise", "organiser", "organize", "organizer", "folder", "date", "dated"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark Beech",
+            "email": "mbeech@mark-beech.co.uk"
+        },
+        {
+            "name": "Max King",
+            "email": "max@kingkreations.co.uk"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jaybizzle\\MigrationsOrganiser\\": "src/"
+        }
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.3.1",
+        "phpunit/phpunit": "^9.3",
+        "illuminate/database": "^8.0",
+        "illuminate/filesystem": "^8.0",
+        "illuminate/console": "^8.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jaybizzle\\MigrationsOrganiser\\MigrationsOrganiserServiceProvider"
+            ]
+        }
+    }
+}

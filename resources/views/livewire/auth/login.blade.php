@@ -8,18 +8,19 @@
                             <h3 class="font-weight-bolder text-info text-gradient">{{ __('Welcome back') }}</h3>
                             <p class="mb-0">{{ __('Create a new acount')}}<br></p>
                             <p class="mb-0">{{__('OR Sign in with these credentials:') }}</p>
-                            <p class="mb-0">{{ __('Email ') }}<b>{{ __('admin@softui.com') }}</b></p>
+                            <p class="mb-0">{{ __('username ') }}<b>{{ __('admin') }}</b></p>
                             <p class="mb-0">{{ __('Password ') }}<b>{{ __('secret') }}</b></p>
                         </div>
                         <div class="card-body">
                             <form wire:submit.prevent="login" action="#" method="POST" role="form text-left">
                                 <div class="mb-3">
-                                    <label for="email">{{ __('Email') }}</label>
-                                    <div class="@error('email')border border-danger rounded-3 @enderror">
-                                        <input wire:model="email" id="email" type="email" class="form-control"
-                                            placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                                    <label for="username">{{ __('Username') }}</label>
+                                    <div class="@error('username')border border-danger rounded-3 @enderror">
+                                        <input wire:model="username" id="username" type="text" class="form-control"
+                                            placeholder="Username" aria-label="username"
+                                            aria-describedby="username-addon">
                                     </div>
-                                    @error('email') <div class="text-danger">{{ $message }}</div> @enderror
+                                    @error('username') <div class="text-danger">{{ $message }}</div> @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="password">{{ __('Password') }}</label>

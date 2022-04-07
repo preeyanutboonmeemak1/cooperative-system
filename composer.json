@@ -28,14 +28,16 @@
 		"ext-mbstring": "*",
 		"ext-pdo": "*",
 		"ext-pdo_mysql": "*",
+		"fideloper/proxy": "^4.4",
 		"fruitcake/laravel-cors": "^2.0",
 		"guzzlehttp/guzzle": "^7.4",
+		"intervention/image": "^2.7",
 		"jaybizzle/laravel-migrations-organiser": "^6.1",
 		"laravel/framework": "^8.76",
 		"laravel/sanctum": "^2.13",
 		"laravel/tinker": "^2.6",
-		"fideloper/proxy": "^4.4",
-		"livewire/livewire": "^2.4"
+		"livewire/livewire": "^2.4",
+		"maatwebsite/excel": "^3.1"
 	},
 	"require-dev": {
 		"bamarni/composer-bin-plugin": "^1.4",

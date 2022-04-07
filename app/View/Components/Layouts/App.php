@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Layouts;
 
+use App\Models\Menu;
 use Illuminate\View\Component;
 
 class App extends Component
@@ -23,6 +24,9 @@ class App extends Component
      */
     public function render()
     {
-        return view('layouts.app');
+        $menu = Menu::all();
+        return view('layouts.app', [
+            'menu' => $menu
+        ]);
     }
 }
