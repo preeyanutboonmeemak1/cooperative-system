@@ -98,7 +98,6 @@ class ProfileStudent extends Component
                         ->get();
         return view('livewire.student-information.profile-student', [
             'students' => $studentInformation,
-            
         ]);
     }
 

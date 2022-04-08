@@ -32,5 +32,5 @@ class Teacher extends Model
      *
      * @var array
      */
-    protected $fillable = ['ta_yc_id', 'ta_prefix_th_id', 'ta_firstname_th', 'ta_lastname_th', 'ta_prefix_en_id', 'ta_firstname_en', 'ta_lastname_en'];
+    protected $fillable = ['ta_yc_id', 'ta_prefix_th_id', 'ta_firstname_th', 'ta_lastname_th', 'ta_prefix_en_id', 'ta_firstname_en', 'ta_lastname_en', 'ta_co_student'];
 }

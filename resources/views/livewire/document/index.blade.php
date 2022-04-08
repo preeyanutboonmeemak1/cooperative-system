@@ -12,10 +12,10 @@
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
+                                    <th class="text-xs font-weight-bold mb-0 text-center">
                                         {{ $document[0]->d_name }}
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
+                                    <th class="text-xs font-weight-bold mb-0 text-center">
                                         {{ $document[1]->d_name }}
                                     </th>
 
@@ -61,23 +61,20 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     
-                        <table class="table align-items-center mb-0">
+                        <table class="table align-items-center mb-0 text-center">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-xs font-weight-bold mb-0">
                                         ลำดับ
                                     </th>
                                    
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-xs font-weight-bold mb-0" >
                                         เอกสาร
                                     </th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-xs font-weight-bold mb-0">
                                         สถานะ
                                     </th>
-                                    <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-xs font-weight-bold mb-0">
                                         ดำเนินการ
                                     </th>
                                 </tr>
@@ -128,8 +125,8 @@
                                                             data-bs-target="#editModal"
                                                             wire:click="setId({{ $value->d_id }})">
                                                             <span style=>
-                                                                <i class="fas fa-arrow-up cursor-pointer"
-                                                                    aria-hidden="true">
+                                                                <i class="fas fa-user-edit "
+                                                                aria-hidden="true">
                                                                     แก้ไขเอกสาร</i>
                                                             </span>
                                                         </a>
@@ -155,9 +152,9 @@
                                                         <a class="mx-3"
                                                             wire:click="export({{ $value->d_id }})">
                                                             <span style=>
-                                                                <i class="fas fa-arrow-up cursor-pointer"
+                                                                <i class="fas fa-arrow-down cursor-pointer"
                                                                     aria-hidden="true">
-                                                                    ดาวน์โหลด</i>
+                                                                    ดาวน์โหลดเอกสาร</i>
                                                             </span>
                                                         </a>
                                                     </li>
@@ -169,15 +166,13 @@
                                                             data-bs-target="#deleteDocModal"
                                                             wire:click="setId({{ $value->d_id }})">
                                                             <span style=>
-                                                                <i class="fas fa-arrow-up cursor-pointer"
+                                                                <i class="cursor-pointer fas fa-trash "
                                                                     aria-hidden="true">
-                                                                    ลบ</i>
+                                                                    ลบเอกสาร</i>
                                                             </span>
                                                         </a>
                                                     </li>
                                                     <?php } ?>
-
-
 
                                                 </ul>
                                             </div>
@@ -192,16 +187,14 @@
         </div>
     </div>
 
-    {{-- Upload Doc --}}
+    {{--////////////////////////////////////////// นำเข้า //////////////////////////////////////--}}
     <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">นำเข้าเอกสาร</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true close-btn">×</span>
-                    </button>
+                   
                 </div>
                 <div class="modal-body">
                     <div>
@@ -219,39 +212,36 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Close</button>
-                    <button type="button" wire:click.prevent="save" class="btn btn-primary close-modal"
-                        data-bs-dismiss="modal">Save
-                        changes</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CLOSE</button>
+                    <button type="button" wire:click.prevent="save" class="btn btn-success btn btn-lg btn-primary">SAVE</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-    {{-- Upload Doc --}}
+    {{--///////////////////////////////// ลบ ////////////////////////////////////////////////--}}
     <div wire:ignore.self class="modal fade" id="deleteDocModal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">ลบเอกสาร</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true close-btn">×</span>
-                    </button>
+                    
                 </div>
                 <div class="modal-body">
+                    คุณต้องการลบเอกสารหรือไม่
                     <div>
                         @if (session()->has('message'))
                             <div class="alert alert-success">
-                                {{ session('message') }}
+                                {{ session('message') }} 
                             </div>
                         @endif
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Close</button>
-                    <button type="button" wire:click.prevent="del" class="btn btn-primary close-modal"
+                    <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">CLOSE</button>
+                    <button type="button" wire:click.prevent="del" class="btn btn-danger" 
                         data-bs-dismiss="modal">Delete</button>
                 </div>
             </div>
@@ -395,9 +385,9 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิก</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CLOSE</button>
                     <button type="button" data-bs-dismiss="modal" wire:click="edit()"
-                        class="btn btn-success btn btn-lg btn-primary">บันทึก</button>
+                        class="btn btn-success btn btn-lg btn-primary">SAVE</button>
                     <!-- data-bs-dismiss="modal" -->
                 </div>
                 </form>
