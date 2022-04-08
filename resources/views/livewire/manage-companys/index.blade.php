@@ -272,11 +272,9 @@
         let infowindow;
 
         function initMap() {
-            const sydney = new google.maps.LatLng(-33.867, 151.195);
 
             infowindow = new google.maps.InfoWindow();
             map = new google.maps.Map(document.getElementById("map"), {
-                center: sydney,
                 zoom: 15,
             });
 

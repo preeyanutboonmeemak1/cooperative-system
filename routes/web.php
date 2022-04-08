@@ -44,6 +44,7 @@ use App\Http\Livewire\StudentsTeachers\StudentsTeacher;//Bank
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
 use App\Http\Livewire\ListStudents;
+use App\Http\Livewire\ListTeachers;
 use App\Http\Livewire\ProfileStudent;
 use App\Http\Livewire\StudentsTeachers;
 
@@ -98,6 +99,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/document', Document::class)->name('document'); //Lek
 
     Route::get('/informations', InformationS::class)->name('informations'); //Leo
+    Route::get('/list-teachers', ListTeachers::class)->name('list-teachers'); //Leo
     Route::get('/list-students', ListStudents::class)->name('list-students'); //Leo
     Route::get('/profile-student/{id}', ProfileStudent::class)->name('profile-student'); //Leo
     Route::get('/followreport', FollowReport::class)->name('followreport'); //Ryu3
@@ -116,6 +118,11 @@ Route::middleware('auth')->group(function () {
         Route::get("/{id}", Students_Information::class)->name('student-information');
         // Route::get('/edit{id}', 'StudentsInformation@edit')->name('student-information');
     });
+
+    // Route::group(['namespace' => 'App\Http\Livewire\informations', 'prefix' => 'informations'], function () {
+    //     Route::get("/{id}", InformationS::class)->name('informations');
+    //     // Route::get('/edit{id}', 'StudentsInformation@edit')->name('student-information');
+    // });
     // Route::get('/edit{id}', 'StudentsInformation@edit')->name('student-information');
     // Route::get('/student-information/{id}', StudentsInformation::class)->name('student-information'); //Leo
 

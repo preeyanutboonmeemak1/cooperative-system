@@ -11,7 +11,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                            <img src="{{ asset('storage/'.$students[0]['si_avatar_file']) }} " />
+                               
+                            <center><img src="{{ asset('storage/'.$students[0]['si_avatar_file']) }} " width="250"/></center>
                                 
                                 <!-- </div>
                                 @error('StudentSubDistrict') <div class="text-danger">{{ $message }}</div> @enderror -->

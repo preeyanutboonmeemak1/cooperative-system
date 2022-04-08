@@ -53,7 +53,7 @@
                                                         data-bs-target="#modal-edit"
                                                         data-bs-original-title="Edit report" wire:click="updateConfirm({{ $list->wr_id }})">
                                                         <span>
-                                                            <i class="fas fa-user-edit text-secondary"
+                                                            <i class="fas fa-user-edit"
                                                                 > แก้ไขชื่อรายงาน</i>
                                                         </span>
                                                     </a>
@@ -63,7 +63,7 @@
                                                 <li>
                                                     <a class="mx-3" type="button" data-bs-toggle="modal" data-bs-target="#modal-delete" wire:click="deleteId({{ $list->wr_id }})">
                                                         <span>
-                                                            <i class="cursor-pointer fas fa-trash text-secondary"
+                                                            <i class="cursor-pointer fas fa-trash"
                                                                 aria-hidden="true">
                                                                 ลบรายงาน</i>
                                                         </span>
@@ -74,7 +74,7 @@
                                                     <a href="dailyreport/{{$list->wr_id}}" class="mx-3" type="button"
                                                         data-bs-toggle="tooltip" data-bs-original-title="Show report">
                                                         <span>
-                                                            <i class="fa-solid fas fa-eye text-secondary"
+                                                            <i class="fa-solid fas fa-eye"
                                                                 aria-hidden="true">
                                                                 แสดงรายงาน</i>
                                                         </span>

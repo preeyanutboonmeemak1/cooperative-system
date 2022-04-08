@@ -18,10 +18,6 @@ class ManageStudents extends Component
 {
     use WithFileUploads;
 
-    protected $listeners = [
-        'getLatitudeForInput'
-    ];
-
     public $prefixTH;
     public $prefixEN;
     public $yearClass;
