@@ -12,7 +12,7 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_nginx
     restart: always
     ports:
-      - 81:80
+      - 8031:80
     volumes:
       - .:/var/www/html:ro
     depends_on:

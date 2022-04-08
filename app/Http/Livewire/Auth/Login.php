@@ -21,12 +21,11 @@ class Login extends Component
         if (auth()->user()) {
             redirect('/dashboard');
         }
-        $this->fill(['username' => 'admin', 'password' => 'secret']);
+        // $this->fill(['username' => 'admin', 'password' => 'secret']);
     }
 
     public function login()
     {
-        $credentials = $this->validate();
         if (auth()->attempt(['username' => $this->username, 'password' => $this->password], $this->remember_me)) {
             $user = User::where(["username" => $this->username])->first();
             auth()->login($user, $this->remember_me);

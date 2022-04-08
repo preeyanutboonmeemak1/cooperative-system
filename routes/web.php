@@ -39,7 +39,7 @@ use App\Http\Livewire\FollowReport; //Ryu3
 use App\Http\Livewire\Follow; //Ryu4
 
 use App\Http\Livewire\StudentsCompanys; //Bank
-use App\Http\Livewire\StudentsTeachers\StudentsTeacher;//Bank
+use App\Http\Livewire\StudentsTeachers\StudentsTeacher; //Bank
 
 use App\Http\Livewire\LaravelExamples\UserProfile;
 use App\Http\Livewire\LaravelExamples\UserManagement;
@@ -113,7 +113,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::group(['namespace' => 'App\Http\Livewire\StudentsInformation', 'prefix' => 'student-information'], function () {
-        Route::get("/{id}", Students_Information::class)->name('student-information');
+        Route::get("/", Students_Information::class)->name('student-information');
         // Route::get('/edit{id}', 'StudentsInformation@edit')->name('student-information');
     });
     // Route::get('/edit{id}', 'StudentsInformation@edit')->name('student-information');
@@ -136,7 +136,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('/manage-companys', ManageCompanys::class)->name('manage-companys'); //Yee
     Route::get('/students-companys', StudentsCompanys::class)->name('students-companys'); //Bank
     Route::get('/students-teachers', StudentsTeachers::class)->name('students-teachers'); //Bank
- 
+
 
     //  Route::get('/students-information', StudentsInformation::class)->name('students-information');
     Route::get('/static-sign-in', StaticSignIn::class)->name('sign-in');
@@ -144,6 +144,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/rtl', Rtl::class)->name('rtl');
     Route::get('/laravel-user-profile', UserProfile::class)->name('user-profile');
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
-
-
 });

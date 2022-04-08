@@ -1,4 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <div>
     <div class="container-fluid py-4">
         <div class="card">
@@ -204,13 +203,13 @@
                                         <label for="studentFileImport"
                                             class="form-control-label">{{ __('ไฟล์นำเข้า') }}</label>
 
-                                        <div <!--
+                                        <div
                                             class="@error('studentFileImport')border border-danger rounded-3 @enderror">
-                                            -->
+                                            
                                             <input class="form-control" type="file" id="u1"
                                                 wire:model="studentFileImport">
                                         </div>
-                                        <div class="text-danger" id="wrn_upload_1">กรุณาอัพ</div>
+                                        <!-- <div class="text-danger" id="wrn_upload_1">กรุณาอัพ</div> -->
                                         <!-- @error('studentFileImport') <div class="text-danger">{{ $message }}</div>
                                         @enderror -->
                                     </div>
@@ -269,24 +268,6 @@
 @push('scripts')
 
 <script>
-$(document).ready(function() {
-    // $('#btn_upload_1').prop( "disabled", true );
-    // $('#wrn_upload_1').hide();
-    $("#u1").change(function() {
-
-        if ($("#formFile").val() != "") {
-            $('#wrn_upload_1').hide();
-            console.log("true")
-            // $('#btn_upload_1').prop( "disabled", false );
-        } else {
-            console.log("false")
-            $('#wrn_upload_1').show();
-        }
-    });
-
-});
-
-
 window.addEventListener('modal-delete', event => {
     const modalDelete = new bootstrap.Modal(document.getElementById('modal-delete'))
     modalDelete.show()

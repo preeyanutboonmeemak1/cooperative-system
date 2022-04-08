@@ -23,10 +23,7 @@ class App extends Component
      * @return \Illuminate\Contracts\View\View|\Closure|string
      */
     public function render()
-    {
-        $menu = Menu::all();
-        return view('layouts.app', [
-            'menu' => $menu
-        ]);
+    {   
+        return view('layouts.app');
     }
 }

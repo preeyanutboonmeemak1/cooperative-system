@@ -263,9 +263,9 @@
 </div>
 
 @push('scripts')
-    <script async
+    <!-- <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8CnNm58ySIG9ZOrDFsTtBcgdCKqJEB0Y&libraries=places&callback=initMap">
-    </script>
+    </script> -->
     <script>
         let map;
         let service;

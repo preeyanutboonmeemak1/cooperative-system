@@ -83,9 +83,11 @@ class Students_Information extends Component
     public $StudentContactAs;
     public $StudentContactPhone;
 
-    public function mount($id)
+    public function mount()
     {
-        $this->stu_id = $id;
+        $user = auth()->user()->ref_id;
+
+        $this->stu_id = $user;
 
         $prefixTH = PrefixTH::all();
         $prefixEN = PrefixEN::all();
@@ -139,14 +141,14 @@ class Students_Information extends Component
 
     public function save()
     {
-    
+
         if ($this->studentID) {
             // dd($this->studentID);
             // $inform = StudentInformation::find($this->studentID);
             $this->update();
         }
     }
-    
+
     public function update()
     {
         $inform = StudentInformation::find($this->studentID);
