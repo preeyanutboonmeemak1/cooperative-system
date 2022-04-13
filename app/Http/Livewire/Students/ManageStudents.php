@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Students;
 
 use App\Imports\StudentImport;
-use App\Models\Import\ImportStudent;
+use App\Models\Master\Course;
+use App\Models\Master\Faculty;
+use App\Models\Master\Field;
 use App\Models\Master\PrefixEN;
 use App\Models\Master\PrefixTH;
 use App\Models\Master\YearClass;
+use App\Models\Master\YearOfStudy;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -21,8 +24,17 @@ class ManageStudents extends Component
     public $prefixTH;
     public $prefixEN;
     public $yearClass;
+    public $yearOfStudy;
+    public $facultyList;
+    public $fieldeList;
+    public $courseList;
 
     public $studentID;
+    public $studentClassYear;
+    public $studentClassOfStudy;
+    public $studentFaculty;
+    public $studentField;
+    public $studentCourse;
     public $studentNumber;
     public $studentPrefixTH;
     public $studentFirstNameTH;
@@ -30,13 +42,17 @@ class ManageStudents extends Component
     public $studentPrefixEN;
     public $studentFirstNameEN;
     public $studentLastNameEN;
-    public $studentClassYear;
 
     public $studentFileImport;
 
     public function mount()
     {
         $this->yearClass = YearClass::all()->sortDesc();
+        $this->yearOfStudy = YearOfStudy::all()->sortDesc();
+        $this->facultyList = Faculty::all();
+        $this->fieldeList = Field::all();
+        $this->courseList = Course::all();
+
         $this->prefixTH = PrefixTH::all();
         $this->prefixEN = PrefixEN::all();
     }

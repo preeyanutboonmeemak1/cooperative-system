@@ -5,11 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\Jobs;
 use App\Models\JobsDetails;
 use App\Models\NextJobs;
+use Livewire\WithFileUploads;
 
 use Livewire\Component;
 
 class DailyReports extends Component
 {
+    use WithFileUploads;
     public $week_id;
     public $details;
     public $problem;
@@ -18,6 +20,7 @@ class DailyReports extends Component
     public $j_week_id;
     public $j_problem;
     public $j_filereport;
+    public $j_file;
 
     public $jdt_id;
     public $jdt_j_id;
@@ -30,10 +33,13 @@ class DailyReports extends Component
     public $njdt_end_date;
     public $njdt_details;
 
+    
 
     public function mount($id)
     {
         $this->week_id = $id;
+        $report = jobs::find($this->week_id);
+        $this->j_filereport = $report->j_filereport;
         
     }
 
@@ -50,6 +56,7 @@ class DailyReports extends Component
         ->where('j_week_id',$this->week_id)
         ->first();
 
+
         return view('livewire.week-report.dailyreport', [
             
             'dailyreport' => $report,
@@ -65,7 +72,7 @@ class DailyReports extends Component
             $report = JobsDetails::find($this->jdt_id);
             $report->jdt_date = $this->jdt_date ;
             $report->jdt_details = $this->jdt_details;
-            $report->update_jdt();
+            $report->update();
         
         }else{
                  JobsDetails::create([      
@@ -90,7 +97,7 @@ class DailyReports extends Component
         $report = JobsDetails::find($this->jdt_id);
         $report->jdt_date = $this->jdt_date ;
         $report->jdt_details = $this->jdt_details;
-        $report->save();
+        $report->update();
     }
 
     public function deletejdt($jdt_id)
@@ -114,7 +121,7 @@ class DailyReports extends Component
             $report->njdt_start_date = $this->njdt_start_date ;
             $report->njdt_end_date = $this->njdt_end_date;
             $report->njdt_details = $this->njdt_details;
-            $report->update_njdt();
+            $report->update();
         }else{
                 NextJobs::create([
                 'njdt_j_id' => $this->week_id, 
@@ -141,7 +148,7 @@ class DailyReports extends Component
         $report->njdt_start_date = $this->njdt_start_date ;
         $report->njdt_end_date = $this->njdt_end_date;
         $report->njdt_details = $this->njdt_details;
-        $report->save();
+        $report->update();
     }
 
     public function deletenjdt($njdt_id)
@@ -177,8 +184,23 @@ class DailyReports extends Component
     public function update_problem()
     {
         $report = jobs::find($this->j_id);
-        $this->j_problem  = $report->j_problem;
-        $report->save();
+        $report->j_problem = $this->j_problem;
+        $report->update();
+    }
+
+    public function update_file()
+    {
+        $this->validate([
+            'j_file' => 'required'
+        ]);
+        // $document->d_student_id = 1;
+        if ($this->j_file) {
+            $report = jobs::find($this->week_id);
+            $fileName = time() . '_' . $this->j_file->getClientOriginalName();
+            $fname = $this->j_file->storeAs('photos', $fileName);
+            $report->j_filereport = $fname;
+            $report->update();
+        } 
     }
 
 }

@@ -141,11 +141,12 @@ class Students_Information extends Component
 
     public function save()
     {
-
         if ($this->studentID) {
+           
             // dd($this->studentID);
             // $inform = StudentInformation::find($this->studentID);
             $this->update();
+           
         }
     }
 

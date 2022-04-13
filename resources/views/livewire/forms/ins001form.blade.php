@@ -1,11 +1,12 @@
 @php
 //print_r($student);
 @endphp
+
 <div class="container-fluid py-4">
-    <div class="card">
+    <div class="card" id='test'>
         <div>
             <center>
-                <h4>ใบสมัครเป็นนิสิตสหกิจศึกษา</h4>
+                <h4>ใบสมัครเป็นนิสิตสหกิจศึกษา IN-S001</h4>
             </center>
         </div>
         <div class="modal-footer"></div>
@@ -80,8 +81,10 @@
                             <div class="col">
                                 <label class="form-label">สาขาวิชา</label>
                                 <select class="form-select" aria-label="Default select example" wire:model='si_md_field_id'>
-                                    <option selected>วิทยาการสารสนเทศ</option>
-                                    <option value="2">วิศวกรรมศาสตร์</option>
+                                    <option selected>วิทยาการคอมพิวเตอร์</option>
+                                    <option value="2">เทคโนโลยีสารสนเทศเพื่ออุตสาหกรรมดิจิทัล</option>
+                                    <option value="2">วิศวกรรมซอฟต์แวร์</option>
+                                    <option value="2">ปัญญาประดิษฐ์ประยุกต์และเทคโนโลยีอัจฉริยะ</option>
                                 </select>
                             </div>
                         </div>
@@ -90,7 +93,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label class="form-label">จำนวนหน่วยกิตที่เรียนมาแล้ว</label>
-                            <input type="text" class="form-control" placeholder="0.00" aria-label="First name">
+                            <input type="text" class="form-control" placeholder="0.00" aria-label="First name" wire:model='fi_gad'>
                         </div>
                         <div class="col-md-3">
                             <label class="form-label">หน่วยกิต GPAX</label>
@@ -110,11 +113,11 @@
                     <div class="row">
                         <div class="col">
                             <label class="form-label">บ้านเลขที่</label>
-                            <input type="text" class="form-control" aria-label="First name">
+                            <input type="text" class="form-control" aria-label="First name" wire:model='si_address'>
                         </div>
                         <div class="col">
                             <label class="form-label">ถนน</label>
-                            <input type="text" class="form-control" aria-label="First name">
+                            <input type="text" class="form-control" aria-label="First name" wire:model='fi_road'>
                         </div>
                         <div class="col">
                             <label class="form-label">ตำบล</label>
@@ -146,17 +149,17 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <label class="form-label">โทรศัพท</label>
-                            <input type="text" class="form-control" placeholder="xxx-xxx-xxxx"
+                            <label class="form-label">โทรศัพท์</label>
+                            <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" wire:model='si_phone_num'
                                 aria-label="First name">
                         </div>
                         <div class="col">
                             <label class="form-label">โทรสาร</label>
-                            <input type="text" class="form-control" aria-label="First name">
+                            <input type="text" class="form-control" aria-label="First name" wire:model='fi_tone'>
                         </div>
                         <div class="col">
                             <label class="form-label"> E-mail</label>
-                            <input type="text" class="form-control" placeholder="mail@email.com"
+                            <input type="text" class="form-control" placeholder="mail@email.com" wire:model='si_email'
                                 aria-label="First name">
                         </div>
                     </div>
@@ -170,19 +173,19 @@
                 <div class="row">
                     <div class="col">
                         <label class="form-label">หอพัก</label>
-                        <input type="text" class="form-control" aria-label="First name">
+                        <input type="text" class="form-control" aria-label="First name" wire:model='fi_dormitory'>
                     </div>
                     <div class="col">
                         <label class="form-label">ห้อง</label>
-                        <input type="text" class="form-control" aria-label="First name">
+                        <input type="text" class="form-control" aria-label="First name" wire:model='fi_num_room'>
                     </div>
                     <div class="col">
-                        <label class="form-label">โทรศัพท์</label>
-                        <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" aria-label="First name">
+                        <label class="form-label">โทรสาร</label>
+                        <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" aria-label="First name" wire:model='fi_tone'>
                     </div>
                     <div class="col">
                         <label class="form-label">มือถือ</label>
-                        <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" aria-label="First name">
+                        <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" aria-label="First name" wire:model='si_phone_num'>
                     </div>
                 </div>
                 <div class="row">
@@ -191,11 +194,11 @@
                 <div class="row">
                     <div class="col">
                         <label class="form-label">บ้านเลขทที่</label>
-                        <input type="text" class="form-control" aria-label="First name">
+                        <input type="text" class="form-control" aria-label="First name" wire:model='fi_house_num'>
                     </div>
                     <div class="col">
                         <label class="form-label">ถนน</label>
-                        <input type="text" class="form-control" aria-label="First name">
+                        <input type="text" class="form-control" aria-label="First name" wire:model='fi_road2'>
                     </div>
                     <div class="col">
                         <label class="form-label">ตำบล</label>
@@ -228,15 +231,15 @@
                 <div class="row">
                     <div class="col">
                         <label class="form-label">โทรศัพท์</label>
-                        <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" aria-label="First name">
+                        <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" aria-label="First name" wire:model='si_phone_num'>
                     </div>
                     <div class="col">
                         <label class="form-label">โทรสาร</label>
-                        <input type="text" class="form-control" aria-label="First name">
+                        <input type="text" class="form-control" aria-label="First name" wire:model='fi_tone'>
                     </div>
                     <div class="col">
                         <label class="form-label">E-mail</label>
-                        <input type="text" class="form-control" placeholder="mail@email.com" aria-label="First name">
+                        <input type="text" class="form-control" placeholder="mail@email.com" aria-label="First name" wire:model='si_email'>
                     </div>
                 </div>
             </div>
@@ -249,11 +252,11 @@
                 <div class="row">
                     <div class="col">
                         <label class="form-label">ชื่อ</label>
-                        <input type="text" class="form-control" placeholder="ชื่อ (TH)" aria-label="First name">
+                        <input type="text" class="form-control" placeholder="ชื่อ (TH)" aria-label="First name"wire:model='fi_fname_parent'>
                     </div>
                     <div class="col">
                         <label class="form-label">นามสกุล</label>
-                        <input type="text" class="form-control" placeholder="นามสกุล (TH)" aria-label="First name">
+                        <input type="text" class="form-control" placeholder="นามสกุล (TH)" aria-label="First name"wire:model='fi_lname_parent'>
                     </div>
                     <div class="col">
                         <label class="form-label">ความสัมพันธ์กับนิสิต</label>
@@ -267,11 +270,11 @@
                 <div class="row">
                     <div class="col">
                         <label class="form-label">ที่อยู่ บ้านเลขที่</label>
-                        <input type="text" class="form-control" aria-label="First name">
+                        <input type="text" class="form-control" aria-label="First name" wire:model='fi_house_num_parent'>
                     </div>
                     <div class="col">
                         <label class="form-label">ถนน</label>
-                        <input type="text" class="form-control" aria-label="First name">
+                        <input type="text" class="form-control" aria-label="First name"wire:model='fi_road_parent'>
                     </div>
                     <div class="col">
                         <label class="form-label">ตำบล</label>
@@ -303,16 +306,16 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label class="form-label">โทรศัพท</label>
-                        <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" aria-label="First name">
+                        <label class="form-label">โทรศัพท์</label>
+                        <input type="text" class="form-control" placeholder="xxx-xxx-xxxx" aria-label="First name" wire:model='fi_phone'>
                     </div>
                     <div class="col">
                         <label class="form-label">โทรสาร</label>
-                        <input type="text" class="form-control" aria-label="First name">
+                        <input type="text" class="form-control" aria-label="First name" wire:model='fi_tone2'>
                     </div>
                     <div class="col">
                         <label class="form-label"> E-mail</label>
-                        <input type="text" class="form-control" placeholder="mail@email.com" aria-label="First name">
+                        <input type="text" class="form-control" placeholder="mail@email.com" aria-label="First name" wire:model='fi_email_parent'>
                     </div>
                 </div>
             </div>
@@ -326,9 +329,14 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิก</button>
-            <button type="submit" class="btn btn-success btn btn-lg btn-primary">บันทึก</button>
+            <button type="submit" class="btn btn-success btn btn-lg btn-primary" wire:click="save">บันทึก</button>
 
         </div>
     </div>
     </form>
 </div>
+<script>
+    function generatePDF() {
+      window.print();
+    }
+</script>

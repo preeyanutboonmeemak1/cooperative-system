@@ -21,6 +21,23 @@ class ManageCompanys extends Component
     public $cp_address_latitude;
     public $cp_address_longitude;
 
+    protected $listeners = [
+        'getLatitudeForInput',
+        'getLongitudeForInput'
+    ];
+
+    public function getLatitudeForInput($value)
+    {
+        if (!is_null($value))
+            $this->cp_address_latitude = $value;
+    }
+
+    public function getLongitudeForInput($value)
+    {
+        if (!is_null($value))
+            $this->cp_address_longitude = $value;
+    }
+
     public function render()
     {
         $company = Companys::all();
@@ -79,6 +96,7 @@ class ManageCompanys extends Component
 
     public function clear()
     {
+        $this->cp_id = '';
         $this->cp_name_th = '';
         $this->cp_name_en = '';
         $this->cp_address_no = '';
@@ -109,6 +127,24 @@ class ManageCompanys extends Component
         $this->cp_address_zipcode = $company->cp_address_zipcode;
         $this->cp_address_latitude = $company->cp_address_latitude;
         $this->cp_address_longitude = $company->cp_address_longitude;
+    }
+
+    public function updateLocation($id)
+    {
+        $company = Companys::find($id);
+        $this->cp_id = $id;
+        $this->dispatchBrowserEvent('modal-location', [
+            'company' => $company
+        ]);
+    }
+
+    public function updateLocationById()
+    {
+        $company = Companys::find($this->cp_id);
+        $company->cp_address_latitude = $this->cp_address_latitude;
+        $company->cp_address_longitude = $this->cp_address_longitude;
+        $company->update();
+        $this->clear();
     }
 
     public function deleteConfirm($id)

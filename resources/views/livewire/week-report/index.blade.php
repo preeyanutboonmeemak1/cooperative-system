@@ -19,13 +19,13 @@
                             <thead>
                                 <tr>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-center text-uppercase  text-lg font-weight-bold mb-0">
                                         สัปดาห์ที่</th>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-center text-uppercase text-lg font-weight-bold mb-0">
                                         รายงานประจำสัปดาห์</th>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-center text-uppercase text-lg font-weight-bold mb-0">
                                         ดำเนินการ
                                     </th>
                                 </tr>
@@ -33,11 +33,12 @@
                             <tbody>
                                 @foreach($weekreport as $list)
                                 <tr>
+                                    
                                     <td>
-                                        <p class="text-center text-xs font-weight-bold mb-0">{{$list->wr_week_id}}</p>
+                                        <p class="text-center text-lg font-weight-bold mb-0">{{$list->wr_week_id}}</p>
                                     </td>
                                     <td>
-                                        <p class="text-xs font-weight-bold mb-0">{{$list->wr_name}}</p>
+                                        <p class="text-lg font-weight-bold mb-0">{{$list->wr_name}}</p>
                                     </td>
 
                                     <td style="text-align : center;">
@@ -83,6 +84,7 @@
                                             </ul>
                                         </div>
                                     </td>
+                                    
                                 </tr>
                                 @endforeach
 
@@ -104,12 +106,12 @@
                     <h5 class="modal-title" id="exampleModalLabel">แก้ไขชื่อรายงานความก้าวหน้า</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form  wire:submit.prevent="update" method="POST" role="form text-left">
+                <form  role="form text-left">
                     <div class="modal-body">
                         <div class="card h-100">
     
                             <ul class="list-group">
-                                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                                <li class="list-group-item border-0 ps-0 pt-0 text-lg">
                                     <input wire:model="wr_name" class="form-control" type="text"
                                     placeholder="ชื่อรายงานความก้าวหน้าประจำสัปดาห์" id="namereport">
                                 </li>
@@ -119,8 +121,8 @@
                         
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
-                        <button type="button" class="mb-0 btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="mb-0 btn btn-success" >Save</button>
+                        <button type="button" class="mb-0 btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                        <button type="button" class="mb-0 btn btn-success" data-bs-dismiss="modal" wire:click="update()">บันทึก</button>
                     </div>
                 </form>
                
@@ -128,6 +130,7 @@
         </div>
     </div>
 
+    
     <div wire:ignore.self class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
 
@@ -138,7 +141,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                     <form  wire:submit.prevent="save" action="#" method="POST" role="form text-left"> 
+                     <form  role="form text-left" > 
                         <div class="card h-100">
                             <input wire:model="wr_name" class="form-control" type="text"
                                 placeholder="ชื่อรายงานความก้าวหน้าประจำสัปดาห์" id="namereport">
@@ -147,13 +150,12 @@
                         
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="mb-0 btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="mb-0 btn btn-primary" >Add</button>
+                    <button type="button" class="mb-0 btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                    <button type="submit" class="mb-0 btn btn-success" data-bs-dismiss="modal" wire:click="save()">บันทึก</button>
                 </div>
                 </form>
             </div>
         </div>
-
     </div>
 
     <div wire:ignore.self class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -166,8 +168,8 @@
                             <p>แน่ใจหรือว่าต้องการลบรายงานความก้าวหน้านี้ ?</p>
                         </div>
                         <div class="modal-footer d-flex justify-content-between">
-                        <button type="button" class="mb-0 btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" wire:click.prevent="delete()" class="btn btn-danger" class="mb-0 btn btn-primary" data-bs-dismiss="modal">Delete</button>
+                        <button type="button" class="mb-0 btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                        <button type="submit" wire:click.prevent="delete()" class="btn btn-danger" class="mb-0 btn btn-primary" data-bs-dismiss="modal">ลบ</button>
                         </div>
                     </div>
                 </div>

@@ -37,7 +37,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">{{$item->mn_name_en}}</span>
+                    <span class="nav-link-text ms-1" style="width: 100px">{{$item->mn_name_en}}</span>
                 </a>
             </li>
             @endforeach

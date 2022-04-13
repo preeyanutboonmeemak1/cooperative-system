@@ -45,6 +45,7 @@ class Forms extends Component
             $document->fm_path = $fname;
             $document->update();
             session()->flash('message', 'File uploaded.');
+            return redirect('/forms');
         }
     }
 
@@ -58,6 +59,7 @@ class Forms extends Component
 
     public function downloadDoc($id)
     {
+        //dd($id);
         $document = Form::find($id);
         return Storage::download($document->fm_path);
     }

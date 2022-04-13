@@ -45,9 +45,9 @@
                                                 class="text-secondary text-xs font-weight-bold">{{$list->si_firstname_en.' '.$list->si_lastname_en}}</span>
                                         </td>
                                         <td class="text-center">
-                                            <a href="/student-information/{{$list->si_id}}" class="mx-3" data-bs-toggle="tooltip"
+                                            <a href="/student-information/" class="mx-3" data-bs-toggle="tooltip"
                                                 data-bs-original-title="Edit user">
-                                                <!-- wire:click="student-information/({{$list->si_id}})"> -->
+                                                
                                                 <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
                                             </a>
                                         </td>

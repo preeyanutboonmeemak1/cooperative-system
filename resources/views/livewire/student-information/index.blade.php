@@ -492,12 +492,36 @@
                         </div>
                     </div>
 
-                    <!-- <img src="{{ asset('storage/photos/1648240052_getstudentimage.jpg') }} " /> -->
+                    
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4">{{ 'บันทึก' }}</button>
+                        <button data-bs-toggle="modal" data-bs-target="#add-modal" type="submit" class="btn btn-success btn-md mt-4 mb-4">{{ 'บันทึก' }}</button>
                     </div>
+                    
                 </form>
             </div>
         </div>
+    </div>
+    <div wire:ignore.self class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="exampleModalLabel"aria-hidden="true">
+    {{-- <a href="/profile-student/" class="mx-3" data-bs-toggle="tooltip"> --}}
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">บันทึกสำเร็จ</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                {{-- <div class="modal-footer "text-align="right">
+                        <button type="button" class="mb-0 btn btn-success" data-bs-dismiss="modal" >ตกลง</button>                  
+                </div>               --}}
+                <a href="profile-student/" class="mx-3" type="button"data-bs-toggle="tooltip"">
+                    <span>
+                        <div class="modal-footer "text-align="right">
+                        <button type="button" class="mb-0 btn btn-success">ตกลง</button>  
+                        </div>
+                    </span>
+                </a>
+            </div>
+        </div>
+    {{-- </a> --}}
+
     </div>
 </div>

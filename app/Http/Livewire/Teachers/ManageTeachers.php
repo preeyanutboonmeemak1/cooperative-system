@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Teachers;
 
+use App\Imports\TeacherImport;
 use App\Models\Master\PrefixEN;
 use App\Models\Master\PrefixTH;
 use App\Models\Master\YearClass;
@@ -9,9 +10,13 @@ use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ManageTeachers extends Component
 {
+    use WithFileUploads;
+
     public $yearClass;
     public $prefixTH;
     public $prefixEN;
@@ -24,6 +29,8 @@ class ManageTeachers extends Component
     public $teacherPrefixEN;
     public $teacherFirstnameEN;
     public $teacherLastnameEN;
+
+    public $teacherFileImport;
 
     public function mount()
     {
@@ -122,5 +129,17 @@ class ManageTeachers extends Component
     public function delete()
     {
         Teacher::find($this->teacherId)->delete();
+    }
+
+    public function import()
+    {
+        $this->dispatchBrowserEvent('modal-import');
+    }
+
+    public function upload()
+    {
+        Excel::import(new TeacherImport, $this->teacherFileImport);
+
+        return redirect()->route('import-teacher');
     }
 }

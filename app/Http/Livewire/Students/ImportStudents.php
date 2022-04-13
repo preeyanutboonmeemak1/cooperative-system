@@ -42,8 +42,8 @@ class ImportStudents extends Component
                 'si_firstname_th' => $list->is_firstname_th,
                 'si_lastname_th' => $list->is_lastname_th,
                 'si_md_pre_eng_id' => $list->is_md_pre_eng_id,
-                'si_firstname_en' => $list->is_firstname_en,
-                'si_lastname_en' => $list->is_lastname_en
+                'si_firstname_en' => ucwords($list->is_firstname_en),
+                'si_lastname_en' => ucwords($list->is_lastname_en)
             ])->si_id;
 
             $student = Student::find($student_id);
@@ -58,6 +58,12 @@ class ImportStudents extends Component
 
         ImportStudent::query()->truncate();
 
+        return redirect()->route('manage-students');
+    }
+
+    public function back()
+    {
+        ImportStudent::query()->truncate();
         return redirect()->route('manage-students');
     }
 }

@@ -68,10 +68,10 @@ class ProfileStudent extends Component
     public $StudentContactAs;
     public $StudentContactPhone;
 
-    public function mount($id)
+    public function mount()
     {
-        $this->stu_id = $id;
-
+        $user = auth()->user()->ref_id;
+        $this->stu_id = $user;
     }
 
     public function render()
@@ -80,22 +80,22 @@ class ProfileStudent extends Component
         $si_id = $this->stu_id;
         $this->studentID = $si_id;
         $studentInformation = StudentInformation::select('*')
-                        ->join('master_prefix_th', 'master_prefix_th.id', '=', 'si_md_pre_th_id')
-                        ->join('master_prefix_eng', 'master_prefix_eng.id', '=', 'si_md_pre_eng_id')
-                        ->join('master_year_of_study', 'master_year_of_study.id', '=', 'si_md_year_of_study_id')
-                        ->join('master_year_class', 'master_year_class.id', '=', 'si_md_year_class_id')
-                        ->join('master_faculty', 'master_faculty.id', '=', 'si_md_faculty_id')
-                        ->join('master_field', 'master_field.id', '=', 'si_md_field_id')
-                        ->join('master_course', 'master_course.id', '=', 'si_md_course_id')
-                        ->join('master_ethnicity', 'master_ethnicity.id', '=', 'si_md_ethnicity_id')
-                        ->join('master_nationality', 'master_nationality.id', '=', 'si_md_nationality_id')
-                        ->join('master_gender', 'master_gender.id', '=', 'si_md_gender_id')
-                        ->join('master_province', 'master_province.id', '=', 'si_md_province_id')
-                        ->join('master_district', 'master_district.id', '=', 'si_md_district_id')
-                        ->join('master_sub_district', 'master_sub_district.id', '=', 'si_md_sub_district_id')
-                        ->join('master_postal_code', 'master_postal_code.id', '=', 'si_md_postal_code_id')
-                        ->where('si_id','=',$this->studentID)
-                        ->get();
+            ->join('master_prefix_th', 'master_prefix_th.id', '=', 'si_md_pre_th_id')
+            ->join('master_prefix_eng', 'master_prefix_eng.id', '=', 'si_md_pre_eng_id')
+            ->join('master_year_of_study', 'master_year_of_study.id', '=', 'si_md_year_of_study_id')
+            ->join('master_year_class', 'master_year_class.id', '=', 'si_md_year_class_id')
+            ->join('master_faculty', 'master_faculty.id', '=', 'si_md_faculty_id')
+            ->join('master_field', 'master_field.id', '=', 'si_md_field_id')
+            ->join('master_course', 'master_course.id', '=', 'si_md_course_id')
+            ->join('master_ethnicity', 'master_ethnicity.id', '=', 'si_md_ethnicity_id')
+            ->join('master_nationality', 'master_nationality.id', '=', 'si_md_nationality_id')
+            ->join('master_gender', 'master_gender.id', '=', 'si_md_gender_id')
+            ->join('master_province', 'master_province.id', '=', 'si_md_province_id')
+            ->join('master_district', 'master_district.id', '=', 'si_md_district_id')
+            ->join('master_sub_district', 'master_sub_district.id', '=', 'si_md_sub_district_id')
+            ->join('master_postal_code', 'master_postal_code.id', '=', 'si_md_postal_code_id')
+            ->where('si_id', '=', $this->studentID)
+            ->get();
         return view('livewire.student-information.profile-student', [
             'students' => $studentInformation,
         ]);
@@ -103,8 +103,5 @@ class ProfileStudent extends Component
 
     public function save()
     {
-        
-      
     }
-    
 }

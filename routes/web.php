@@ -29,6 +29,9 @@ use App\Http\Livewire\Ins006; //Por006
 
 use App\Http\Livewire\WeekReport; //Ryu
 use App\Http\Livewire\DailyReports; //Ryu2
+use App\Http\Livewire\Dashboard\DashboardAdmin;
+use App\Http\Livewire\Dashboard\DashboardStudent;
+use App\Http\Livewire\Dashboard\DashboardTeacher;
 use App\Http\Livewire\Report; //Ryu3
 use App\Http\Livewire\Routedailyreport; //Ryu3
 
@@ -46,6 +49,7 @@ use App\Http\Livewire\LaravelExamples\UserManagement;
 use App\Http\Livewire\ListStudents;
 use App\Http\Livewire\ListTeachers;
 use App\Http\Livewire\ProfileStudent;
+use App\Http\Livewire\ProfileStudentS;
 use App\Http\Livewire\StudentsTeachers;
 
 /*
@@ -69,10 +73,12 @@ Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-passwo
 Route::get('/reset-password/{id}', ResetPassword::class)->name('reset-password')->middleware('signed');
 
 
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
+    Route::get('/dashboard-student', DashboardStudent::class)->name('dashboard-student');
+    Route::get('/dashboard-admin', DashboardAdmin::class)->name('dashboard-admin');
+    Route::get('/dashboard-teacher', DashboardTeacher::class)->name('dashboard-teacher');
+
     Route::get('/billing', Billing::class)->name('billing');
     Route::get('/profile', Profile::class)->name('profile');
     Route::get('/tables', Tables::class)->name('tables');
@@ -101,9 +107,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/informations', InformationS::class)->name('informations'); //Leo
     Route::get('/list-teachers', ListTeachers::class)->name('list-teachers'); //Leo
     Route::get('/list-students', ListStudents::class)->name('list-students'); //Leo
-    Route::get('/profile-student/{id}', ProfileStudent::class)->name('profile-student'); //Leo
+    Route::get('/profile-student', ProfileStudent::class)->name('profile-student'); //Leo
+    Route::get('/profile-students/{id}', ProfileStudentS::class)->name('profile-students'); //Leo
     Route::get('/followreport', FollowReport::class)->name('followreport'); //Ryu3
-    Route::get('/follow', Follow::class)->name('follow'); //Ryu3
+    Route::get('/follow/{id}', Follow::class)->name('follow'); //Ryu3
 
     Route::group(['namespace' => 'App\Http\Livewire\Companys', 'prefix' => 'manage-companys'], function () {
         Route::get("/", ManageCompanys::class)->name('manage-companys');
@@ -135,6 +142,7 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['namespace' => 'App\Http\Livewire\Teachers', 'prefix' => 'manage-teachers'], function () {
         Route::get("/", ManageTeachers::class)->name('manage-teachers');
+        Route::get("/import-teacher", ImportTeachers::class)->name('import-teacher');
     });
 
     // Route::get('/students-information', StudentsInformation::class, 'createproject')->name('StudentsInformation.createproject');

@@ -29,7 +29,7 @@
                                         <p class="text-xs font-weight-bold mb-0"> ไม่พบข้อมูล</p>
                                         <?php } else { ?>
                                         
-                                        <img width="100" height="auto" src="/storage/photos/pdf.png" alt="cover image">
+                                        <img width="100" height="auto" src="/storage/photos2/pdf.png" alt="cover image">
                                         
                                         <?php } ?>
                                     </td>
@@ -38,7 +38,7 @@
                                         <p class="text-xs font-weight-bold mb-0"> ไม่พบข้อมูล</p>
                                         <?php } else { ?>
                                         
-                                        <img width="100" height="auto" src="/storage/photos/pdf.png" alt="cover image">
+                                        <img width="100" height="auto" src="/storage/photos2/pdf.png" alt="cover image">
                                         <?php } ?>
                                     </td>
 
@@ -196,7 +196,9 @@
                     <h5 class="modal-title" id="exampleModalLabel">นำเข้าเอกสาร</h5>
                    
                 </div>
+                
                 <div class="modal-body">
+                    &nbsp เฉพาะไฟล์นามสกุล .pdf เท่านั้น
                     <div>
                         @if (session()->has('message'))
                             <div class="alert alert-success">
@@ -213,7 +215,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CLOSE</button>
-                    <button type="button" wire:click.prevent="save" class="btn btn-success btn btn-lg btn-primary">SAVE</button>
+                    <button type="button" data-bs-dismiss="modal" wire:click.prevent="save"
+                        class="btn btn-success btn btn-lg btn-primary">SAVE</button>
                 </div>
             </div>
         </div>

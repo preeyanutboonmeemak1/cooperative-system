@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Students;
+namespace App\Http\Livewire\Teachers;
 
-use App\Models\Import\ImportStudent;
+use App\Models\Import\ImportTeacher;
 use App\Models\Student;
+use App\Models\Teacher;
 use App\Models\User;
 use Hash;
 use Livewire\Component;
@@ -13,7 +14,7 @@ class ImportTeachers extends Component
 
     public $exportState = true;
     public $selectAll = false;
-    public $selectStudent = [];
+    public $selectTeacher = [];
 
     public function mount()
     {
@@ -21,43 +22,42 @@ class ImportTeachers extends Component
 
     public function render()
     {
-        $student = ImportStudent::all();
-        $this->exportState = count($this->selectStudent) < 1;
+        $teachers = ImportTeacher::all();
+        $this->exportState = count($this->selectTeacher) < 1;
 
-        return view('livewire.manage-students.import', [
-            'students' => $student,
+        return view('livewire.manage-teachers.import', [
+            'teachers' => $teachers,
         ]);
     }
 
     public function import()
     {
-        $import = ImportStudent::query()
-            ->whereIn('is_id', $this->selectStudent)
+        $import = ImportTeacher::query()
+            ->whereIn('it_id', $this->selectTeacher)
             ->get();
 
         foreach ($import as $list) {
-            $student_id = Student::create([
-                'si_st_num' => $list->is_st_num,
-                'si_md_pre_th_id' => $list->is_md_pre_th_id,
-                'si_firstname_th' => $list->is_firstname_th,
-                'si_lastname_th' => $list->is_lastname_th,
-                'si_md_pre_eng_id' => $list->is_md_pre_eng_id,
-                'si_firstname_en' => $list->is_firstname_en,
-                'si_lastname_en' => $list->is_lastname_en
-            ])->si_id;
+            $teacher_id = Teacher::create([
+                'ta_md_pre_th_id' => $list->it_md_pre_th_id,
+                'ta_firstname_th' => $list->it_firstname_th,
+                'ta_lastname_th' => $list->it_lastname_th,
+                'ta_md_pre_eng_id' => $list->it_md_pre_eng_id,
+                'ta_firstname_en' => $list->it_firstname_en,
+                'ta_lastname_en' => $list->it_lastname_en
+            ])->ta_id;
 
-            $student = Student::find($student_id);
+            $teacher = Teacher::find($teacher_id);
 
             User::create([
-                'username' => $student->si_st_num,
-                'password' => Hash::make($student->si_st_num),
-                'ref_id' => $student_id,
-                'ref_type' => 'student'
+                'username' => $teacher->ta_firstname_th,
+                'password' => Hash::make($teacher->ta_firstname_th),
+                'ref_id' => $teacher_id,
+                'ref_type' => 'teacher'
             ]);
         }
 
-        ImportStudent::query()->truncate();
+        ImportTeacher::query()->truncate();
 
-        return redirect()->route('manage-students');
+        return redirect()->route('manage-teachers');
     }
 }

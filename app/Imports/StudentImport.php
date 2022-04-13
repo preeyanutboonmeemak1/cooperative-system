@@ -19,8 +19,8 @@ class StudentImport implements ToModel, WithHeadingRow
                 'is_firstname_th' => preg_replace('/\s+/', '', $row['is_firstname_th']),
                 'is_lastname_th' => preg_replace('/\s+/', '', $row['is_lastname_th']),
                 'is_md_pre_eng_id' => $this->getPrefixENByText(preg_replace('/\s+/', '', $row['is_md_pre_eng_id']))->id,
-                'is_firstname_en' => preg_replace('/\s+/', '', $row['is_firstname_en']),
-                'is_lastname_en' => preg_replace('/\s+/', '', $row['is_lastname_en'])
+                'is_firstname_en' =>  preg_replace('/\s+/', '', ucwords($row['is_firstname_en'])),
+                'is_lastname_en' => preg_replace('/\s+/', '', ucwords($row['is_lastname_en'])),
             ]);
         }
     }

@@ -46,8 +46,7 @@
                                         </td>
                                         <td class="text-center">
                                             <a href="/follow" class="mx-3" data-bs-toggle="tooltip"
-                                                data-bs-original-title="Edit user">
-                                                <!-- wire:click="student-information/({{$list->si_id}})"> -->
+                                                data-bs-original-title="แสดงรายงานประจำสัปดาห์">
                                                 <i  class="fa-solid fas fa-eye text-secondary" aria-hidden="true"></i>
                                             </a>
                                         </td>

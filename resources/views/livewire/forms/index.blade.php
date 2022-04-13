@@ -7,26 +7,25 @@
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
+                        <table class="table align-items-center mb-0 text-center">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-lg font-weight-bold mb-0">
                                         ลำดับ
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        index
+                                    <th class="text-lg font-weight-bold mb-0">
+                                        INDEX
                                     </th>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-lg font-weight-bold mb-0">
                                         แบบฟอร์ม
                                     </th>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-lg font-weight-bold mb-">
                                         สถานะ
                                     </th>
                                     <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-lg font-weight-bold mb-0">
                                         ดำเนินการ
                                     </th>
                                 </tr>
@@ -37,7 +36,7 @@
                                         <td class="ps-4">
                                             <p class="text-xs font-weight-bold mb-0">{{ ++$index }}</p>
                                         </td>
-                                        <td class="text-left">
+                                        <td class="text-center">
                                             <p class="text-xs font-weight-bold mb-0" wire:key="{{ $value->index }}">
                                                 {{ $value['fm_index'] }}</p>
                                         </td>
@@ -69,7 +68,7 @@
                                                             <a href="ins00{{$index}}" class="mx-3" type="button"
                                                                 data-bs-toggle="tooltip" data-bs-original-title="Show report">
                                                                 <span>
-                                                                    <i class="fa-solid fas fa-eye text-secondary"
+                                                                    <i class="fas fa-user-edit"
                                                                         aria-hidden="true">
                                                                         แก้ไขเอกสาร</i>
                                                                 </span>
@@ -82,7 +81,7 @@
                                                                 <span style=>
                                                                     <i class="fas fa-arrow-up cursor-pointer"
                                                                         aria-hidden="true">
-                                                                        นำเข้าเอกสา</i>
+                                                                        นำเข้าเอกสาร</i>
                                                                 </span>
                                                             </a>
 
@@ -91,31 +90,30 @@
                                                         <li>
                                                             <a class="mx-3" wire:click="downloadDoc({{ $value->fm_id }})">
                                                                 <span style=>
-                                                                    <i class="fas fa-arrow-up cursor-pointer"
+                                                                    <i class="fas fa-arrow-down cursor-pointer"
                                                                         aria-hidden="true">
                                                                         ดาวน์โหลด</i>
                                                                 </span>
                                                             </a>
                                                         </li>
+                                                        {{-- <li>
+                                                            <a href="ins00{{$index}}" class="mx-3" type="button"
+                                                                data-bs-toggle="tooltip" data-bs-original-title="Show report">
+                                                                <span>
+                                                                    <i class="fas fa-user-edit"
+                                                                        aria-hidden="true">
+                                                                        แก้ไขเอกสาร</i>
+                                                                </span>
+                                                            </a>
+                                                        </li> --}}
                                                         <li>
                                                             <a class="mx-3" type="button"
                                                                 data-bs-toggle="modal" data-bs-target="#deleteDocModal"
                                                                 wire:click="setId({{ $value->fm_id }},'{{$value->fm_index}}')">
                                                                 <span style=>
-                                                                    <i class="fas fa-arrow-up cursor-pointer"
+                                                                    <i class="cursor-pointer fas fa-trash"
                                                                         aria-hidden="true">
                                                                         ลบ</i>
-                                                                </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="mx-3" type="button"
-                                                                data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                                                wire:click="setId({{ $value->fm_id }},'{{$value->fm_index}}')">
-                                                                <span style=>
-                                                                    <i class="fas fa-arrow-up cursor-pointer"
-                                                                        aria-hidden="true">
-                                                                        แก้ไขเอกสาร</i>
                                                                 </span>
                                                             </a>
                                                         </li>
@@ -130,7 +128,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
     {{-- Upload Doc --}}
@@ -145,6 +142,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    &nbsp เฉพาะไฟล์นามสกุล .pdf เท่านั้น
                     <div>
                         @if (session()->has('message'))
                             <div class="alert alert-success">
@@ -160,10 +158,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Close</button>
-                    <button type="button" wire:click.prevent="uploadDoc" class="btn btn-primary close-modal"
-                        data-bs-dismiss="modal">Save
-                        changes</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CLOSE</button>
+                    <button type="button" wire:click.prevent="uploadDoc" class="btn btn-success btn btn-lg btn-primary"
+                        data-bs-dismiss="modal">SAVE</button>
                 </div>
             </div>
         </div>
@@ -182,6 +179,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    คุณต้องการลบเอกสารหรือไม่
                     <div>
                         @if (session()->has('message'))
                             <div class="alert alert-success">
